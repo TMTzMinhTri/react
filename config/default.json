@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb://localhost:27017/expressReact"
+    "mongoURI": "mongodb://localhost:27017/expressReact",
+    "jwtSecret": "mysecrettoken"
 }
