@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb://localhost:27017/expressReact",
-    "jwtSecret": "mysecrettoken"
+    "jwtSecret": "mysecrettoken",
+    "githubClientID": "4326e87e3e4145b9e485",
+    "githubSecret": "e4896c63fc1c80b9ae1c93904c50e4cdd1708c26"
 }
