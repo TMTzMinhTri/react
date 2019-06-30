@@ -22,7 +22,6 @@ router.post('/', [
     if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() })
 
-
     //create user
     try {
         let user = await User.findOne({ email })
