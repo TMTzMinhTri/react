@@ -19,39 +19,26 @@ router.post('/', [
     const { name, email, password } = req.body
 
     //validate form
-    if (!errors.isEmpty()) {
-        return res
-            .status(400)
-            .json({ errors: errors.array() })
-    }
+    if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() })
+
 
     //create user
     try {
         let user = await User.findOne({ email })
-        if (user) {
-            return res
-                .status(400)
-                .json({ errors: [{ msg: "User already exists" }] })
-        }
-        const avata = gravatar.url(email, {
-            s: "200",
-            r: "x",
-            d: "mm"
-        })
+        if (user)
+            return res.status(400).json({ errors: [{ msg: "User already exists" }] })
 
-        user = new User({
-            name, email, avata, password
-        })
+        const avata = gravatar.url(email, { s: "200", r: "x", d: "mm" })
+
+        user = new User({ name, email, avata, password })
 
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt)
         await user.save();
 
-        const payload = {
-            user: {
-                id: user.id
-            }
-        }
+        const payload = { user: { id: user.id } }
+        
         jwt.sign(payload, config.get("jwtSecret"), {
             expiresIn: 360000
         }, (err, token) => {
