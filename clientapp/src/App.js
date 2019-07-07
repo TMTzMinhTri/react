@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Landing } from "./pages/HomePage/landing";
-import { Navbar } from "./pages/HomePage/navbar";
+import  Navbar  from "./pages/HomePage/navbar";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Alert from './pages/HomePage/alert'
