@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from 'axios'
+import { Link, Redirect } from "react-router-dom";
+import { connect } from 'react-redux'
+import proptypes from "prop-types"
+
+import { login } from '../../actions/auth'
 
 
-export const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormdata] = useState({
         email: "",
         password: "",
@@ -12,11 +15,18 @@ export const Login = () => {
     const { email, password } = formData
     const onchange = e =>
         setFormdata({ ...formData, [e.target.name]: e.target.value })
+
     const onSubmit = async e => {
         e.preventDefault();
-
         console.log(formData)
+        login({email, password})
     }
+
+    if (isAuthenticated) {
+        return <Redirect to='/dashboard' />
+    }
+
+
     return <>
         <h1 className="large text-primary">Sign in</h1>
         <p className="lead"><i className="fas fa-user"></i> Sign in to Your Account</p>
@@ -48,3 +58,14 @@ export const Login = () => {
         </p>
     </>
 }
+
+Login.propsTypes = {
+    login: proptypes.func.isRequired,
+    isAuthenticated: proptypes.bool
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, {login})(Login)

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from 'react-redux'
 import propsTypes from "prop-types"
 
-import axios from 'axios'
 
 import { setAlert } from '../../actions/alert'
 import { register } from '../../actions/auth'
 
 
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
     const [formData, setFormdata] = useState({
         name: "",
         email: "",
@@ -29,6 +28,11 @@ const Register = ({ setAlert, register }) => {
             register({ name, email, password })
         }
     }
+
+    if(isAuthenticated){
+        return <Redirect to="/dashboard" />
+    }
+
     return <>
         <h1 className="large text-primary">Sign Up</h1>
         <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
@@ -86,7 +90,11 @@ const Register = ({ setAlert, register }) => {
 
 Register.propsTypes = {
     setAlert: propsTypes.func.isRequired,
-    register: propsTypes.func.isRequired
+    register: propsTypes.func.isRequired,
+    isAuthenticated:propsTypes.bool
 }
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
 
-export default connect(null, { setAlert, register })(Register)
+export default connect(mapStateToProps, { setAlert, register })(Register)
