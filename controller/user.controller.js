@@ -2,6 +2,8 @@ const gravatar = require('gravatar')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
+const twillio = require('twilio')
+const randomstring = require('randomstring')
 const User = require('../models/User')
 const { validationResult } = require('express-validator/check');
 
@@ -9,7 +11,7 @@ module.exports = {
     createNewUser: async (req, res) => {
         const errors = validationResult(req)
         const { name, email, password } = req.body
-        
+
         //validate form
         if (!errors.isEmpty())
             return res.status(400).json({ errors: errors.array() })
@@ -81,5 +83,31 @@ module.exports = {
             console.error(error.message)
             res.status(500).send("server error")
         }
+    },
+    sendSmsCode: async (req, res) => {
+        const accountSid = config.get('twillioSID')
+        const authToken = config.get('twillioAuthToken')
+        const client = twillio(accountSid, authToken)
+        const number = randomstring.generate({
+            length: 4,
+            charset: 'numeric'
+        });
+        const phoneNumber = req.body.phoneNumber
+
+        try {
+            let result = await client.messages.create({
+                body: number,
+                from: '+18632044402',
+                to: phoneNumber
+            })
+            if (result) {
+                res.json({ msg: "success" })
+            }
+            
+        } catch (error) {
+            console.error(error.message)
+            res.status(500).send("server error")
+        }
+
     }
 }

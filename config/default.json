@@ -2,5 +2,7 @@
     "mongoURI": "mongodb://localhost:27017/expressReact",
     "jwtSecret": "mysecrettoken",
     "githubClientID": "4326e87e3e4145b9e485",
-    "githubSecret": "e4896c63fc1c80b9ae1c93904c50e4cdd1708c26"
+    "githubSecret": "e4896c63fc1c80b9ae1c93904c50e4cdd1708c26",
+    "twillioSID": "ACbb1dd1611bdd03e59a7be33856ee09af",
+    "twillioAuthToken": "4db0a83eb953599e534a940853e14649"
 }

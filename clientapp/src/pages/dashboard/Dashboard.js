@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 
 import { getCurrentProfile } from "../../actions/profile";
 import { Spinner } from "../HomePage/Spinner";
-
+import DashboardAction from "./DashboardAction"
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
     useEffect(() => {
         getCurrentProfile()
-    }, [])
-    console.log(user)
+    }, [getCurrentProfile])
+
     return loading && profile === null
         ? <Spinner />
         : <>
@@ -21,7 +21,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                 Welcome{' '}{user && user.name}
             </p>
             {profile !== null
-                ? <>has</>
+                ? <><DashboardAction /></>
                 : <>
                     <p>Please add some info</p>
                     <Link to="/create-profile" className="btn btn-primary">

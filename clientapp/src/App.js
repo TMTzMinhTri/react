@@ -7,6 +7,8 @@ import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Alert from './pages/HomePage/alert'
 import Dashboard from './pages/dashboard/Dashboard'
+import CreateProfile from './pages/profile/createProfile'
+import EditProfile from './pages/profile/editProfile'
 
 
 import PrivateRoute from './utils/PrivateRoute'
@@ -36,6 +38,8 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+            <PrivateRoute exact path="/edit-profile" component={EditProfile} />
           </Switch>
         </section>
       </Router>

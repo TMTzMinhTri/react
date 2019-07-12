@@ -4,7 +4,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node server",
+    "start": "nodemon server",
     "server": "nodemon server",
     "client": "npm start --prefix clientapp",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -18,7 +18,9 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.0",
-    "request": "^2.88.0"
+    "randomstring": "^1.1.5",
+    "request": "^2.88.0",
+    "twilio": "^3.33.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
