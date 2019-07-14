@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-// import propsTypes from "prop-types"
 import { connect } from "react-redux";
 
 const DashboardAction = () => {
@@ -16,13 +15,5 @@ const DashboardAction = () => {
             </Link>
     </div>
 }
-
-// Alert.propsTypes = {
-//     alerts: propsTypes.array.isRequired
-// }
-// const mapdispatchtoprops = state => ({
-//     alerts: state.alert
-// })
-
 export default connect(null)(DashboardAction)
 

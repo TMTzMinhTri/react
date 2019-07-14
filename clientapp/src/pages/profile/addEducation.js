@@ -15,11 +15,11 @@ const AddEducation = ({ addEducation, history }) => {
         from: "",
         to: "",
         current: false,
-        discription: ""
+        description: ""
     })
     const [toDateDisable, toggleDisable] = useState(false)
 
-    const { school, degree, fieldOfStudy, current, discription, to, from } = formData
+    const { school, degree, fieldOfStudy, current, description, to, from } = formData
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
     return <>
@@ -42,6 +42,9 @@ const AddEducation = ({ addEducation, history }) => {
                 <input type="text" placeholder="* fieldOfStudy" name="fieldOfStudy" required value={fieldOfStudy} onChange={e => onChange(e)} />
             </div>
             <div class="form-group">
+                <input type="text" placeholder="* degree" name="degree" required value={degree} onChange={e => onChange(e)} />
+            </div>
+            <div class="form-group">
                 <h4>From Date</h4>
                 <input type="date" name="from" value={from} onChange={e => onChange(e)} />
             </div>
@@ -62,7 +65,7 @@ const AddEducation = ({ addEducation, history }) => {
                     cols="30"
                     rows="5"
                     placeholder="Job Description"
-                    value={discription} onChange={e => onChange(e)}
+                    value={description} onChange={e => onChange(e)}
                 ></textarea>
             </div>
             <input type="submit" class="btn btn-primary my-1" />

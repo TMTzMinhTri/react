@@ -29,6 +29,7 @@ export default function (state = initialState, action) {
                 repos: null,
                 loading: false
             }
+            
         default:
             return state
     }

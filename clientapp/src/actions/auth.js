@@ -43,7 +43,6 @@ export const loadUser = () => async dispatch => {
         })
 
     } catch (error) {
-        console.log(error.response)
         dispatch({
             type: AUTH_ERROR
         })
