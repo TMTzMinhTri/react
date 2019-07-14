@@ -7,6 +7,8 @@ import { getCurrentProfile } from "../../actions/profile";
 import { Spinner } from "../HomePage/Spinner";
 import DashboardAction from "./DashboardAction"
 
+import Experience from "./Experience"
+
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
     useEffect(() => {
         getCurrentProfile()
@@ -21,7 +23,10 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                 Welcome{' '}{user && user.name}
             </p>
             {profile !== null
-                ? <><DashboardAction /></>
+                ? <>
+                    <DashboardAction />
+                    <Experience experience ={profile.experience} />
+                </>
                 : <>
                     <p>Please add some info</p>
                     <Link to="/create-profile" className="btn btn-primary">

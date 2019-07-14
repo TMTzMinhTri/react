@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import propsTypes from "prop-types"
+// import propsTypes from "prop-types"
 import { connect } from "react-redux";
 
 const DashboardAction = () => {

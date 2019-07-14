@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import propsTypes from "prop-types"
 import { connect } from "react-redux";
 import { createProfile } from "../../actions/profile";
@@ -159,10 +159,7 @@ const Createprofile = ({ createProfile, history }) => {
 Createprofile.propsTypes = {
     createProfile: propsTypes.func.isRequired
 }
-{/* 
-// const mapStateToProps = state => {
-//     isAuthenticated: state.auth
-// } */}
+
 
 export default connect(null, { createProfile })(withRouter(Createprofile))
 
