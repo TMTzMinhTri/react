@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from "react-redux";
 import proptypes from "prop-types"
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import { addExperience } from "../../actions/profile";
-
-import { Spinner } from "../HomePage/Spinner";
 
 const AddExperience = ({ addExperience, history }) => {
 
@@ -82,4 +80,4 @@ AddExperience.propsTypes = {
 const mapStateToProps = state => ({
 
 })
-export default connect(mapStateToProps, { addExperience })(AddExperience)
+export default connect(mapStateToProps, { addExperience })(withRouter(AddExperience))

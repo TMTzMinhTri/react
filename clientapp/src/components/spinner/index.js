@@ -1,5 +1,5 @@
 import React from "react";
-import './spinner.css'
+import './index.css'
 
 export const Spinner = () => (
     <div className='helper-middle-container'>

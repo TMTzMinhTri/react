@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from "react-redux";
 import proptypes from "prop-types"
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import { addEducation } from "../../actions/profile";
 
@@ -80,4 +80,4 @@ AddEducation.propsTypes = {
 const mapStateToProps = state => ({
 
 })
-export default connect(mapStateToProps, { addEducation })(AddEducation)
+export default connect(mapStateToProps, { addEducation })(withRouter(AddEducation))

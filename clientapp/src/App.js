@@ -11,6 +11,7 @@ import CreateProfile from './pages/profile/createProfile'
 import EditProfile from './pages/profile/editProfile'
 import AddExperience from './pages/profile/addExperience'
 import AddEducation from './pages/profile/addEducation'
+import Profiles from './pages/dashboard/profiles/profiles'
 
 import PrivateRoute from './utils/PrivateRoute'
 //redux
@@ -38,6 +39,7 @@ const App = () => {
           <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profiles" component={Profiles} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/create-profile" component={CreateProfile} />
             <PrivateRoute exact path="/edit-profile" component={EditProfile} />

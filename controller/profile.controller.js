@@ -3,11 +3,13 @@ const config = require('config')
 const { validationResult } = require('express-validator/check');
 const Profile = require('../models/Profile.modal')
 const User = require('../models/User')
+const Post = require('../models/Post.modal')
 
 
 module.exports = {
     deleteUserAndProfile: async (req, res) => {
         try {
+            await Post.deleteMany({user: req.user.id})
             await Profile.findOneAndRemove({ user: req.user.id })
             await User.findOneAndRemove({ _id: req.user.id })
             res.json({ msg: "User deleted" })

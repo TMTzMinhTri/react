@@ -4,7 +4,7 @@ import proptypes from "prop-types"
 import { Link } from 'react-router-dom'
 
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
-import { Spinner } from "../HomePage/Spinner";
+import * as Components from '../../components'
 import DashboardAction from "./DashboardAction"
 
 import Experience from "./Experience"
@@ -16,7 +16,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
     }, [getCurrentProfile])
 
     return loading && profile === null
-        ? <Spinner />
+        ? <Components.Spinner />
         : <>
             <h1 className="large text-primary">Dashboard</h1>
             <p className="lead">
