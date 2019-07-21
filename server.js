@@ -1,5 +1,6 @@
 const express = require('express')
 const connectDB = require('./config/db')()
+var cookieParser = require('cookie-parser')
 const app = express()
 var cors = require('cors')
 
@@ -8,6 +9,7 @@ connectDB
 
 //init middleware
 app.use(express.json({ extended: true}))
+app.use(cookieParser("sadasdasdsd"))
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

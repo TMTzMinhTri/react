@@ -67,6 +67,7 @@ module.exports = {
                 expiresIn: 360000
             }, (err, token) => {
                 if (err) throw err;
+                res.cookie("token", token, { signed: true })
                 res.json({ token })
             })
 
@@ -103,7 +104,7 @@ module.exports = {
             if (result) {
                 res.json({ msg: "success" })
             }
-            
+
         } catch (error) {
             console.error(error.message)
             res.status(500).send("server error")
