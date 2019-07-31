@@ -22,9 +22,7 @@ const Login = ({ login, isAuthenticated }) => {
     }
 
     if (isAuthenticated) {
-        const token = localStorage.getItem('token')
-        let path = `/dashboard/${token}`
-        return <Redirect to={path} />
+        return <Redirect to='/dashboard' />
     }
 
 

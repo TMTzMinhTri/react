@@ -5,9 +5,7 @@ import propTypes from 'prop-types'
 
 const Landing = ({ isAuthenticated }) => {
     if (isAuthenticated) {
-        const token = localStorage.getItem('token')
-        let path = `/dashboard/${token}`
-        return <Redirect to={path} />
+        return <Redirect to="/dashboard" />
     }
     return <section className="landing">
         <div className="dark-overlay">
